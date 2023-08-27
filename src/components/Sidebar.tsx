@@ -42,7 +42,7 @@ const Sidebar = () => {
       {sideBarOpen && (
         <>
           <div
-            onClick={toggleModal}
+            onClick={()=> toggleModal()}
             className="bg-black opacity-40 absolute inset-0"
           ></div>
           <div className="w-4/5 mt-10 pt-20 lg:mt-0 lg:pt-10 lg:w-1/2 lg:pl-28 py-8 rounded-r-3xl overflow-auto absolute top-0 bottom-0 bg-white shadow-xl">

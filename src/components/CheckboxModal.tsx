@@ -1,7 +1,11 @@
 import React from "react";
+import { IStatusType } from "../../types/interface";
 import Checkbox from "./Checkbox";
 
-export const checkBoxdata = [
+export interface cBInterface {
+  name: IStatusType;
+}
+export const checkBoxdata: cBInterface[] = [
   {
     name: "draft",
   },
@@ -9,7 +13,7 @@ export const checkBoxdata = [
     name: "pending",
   },
   {
-    name: "success",
+    name: 'paid',
   },
   { name: "cancelled" },
 ];

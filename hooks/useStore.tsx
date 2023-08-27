@@ -7,7 +7,7 @@ export type State = {
 };
 
 export type Action = {
-  toggleSideModal: (sideModal: State["sideModal"]) => void;
+  toggleSideModal: () => void;
   setStatus: (status: State["status"]) => void;
 };
 export const useStore = create<State & Action>((set) => ({
