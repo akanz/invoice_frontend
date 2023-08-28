@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import Sidebar from "../components/Sidebar";
+import QueryWrapper from "./QueryWrapper";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,7 +33,10 @@ export default function RootLayout({
         />
       </head>
       <body className={""}>
-        <div>{children}</div>
+        <QueryWrapper>
+          <div>{children}</div>
+          <ReactQueryDevtools />
+        </QueryWrapper>
       </body>
     </html>
   );

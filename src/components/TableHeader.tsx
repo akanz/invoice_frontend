@@ -21,8 +21,8 @@ const TableHeader = () => {
           onClick={() => setOpenCheckModal(!openCheckModal)}
           className="flex cursor-pointer relative items-center"
         >
-          <span className="mr-2">
-            Filter <span className="hidden md:flex">by status</span>{" "}
+          <span className="mr-2 flex">
+            Filter <span className="ml-1 hidden md:flex">by status</span>{" "}
           </span>
           <MdKeyboardArrowDown className="text-purplish" />
           {openCheckModal && <CheckboxModal />}

@@ -2,11 +2,11 @@ import React from "react";
 import InvoiceBody from "./InvoiceBody";
 import SubHeader from "./SubHeader";
 
-const InvoiceComp = () => {
+const InvoiceComp = ({ data }: { data: any }) => {
   return (
     <div>
-      <SubHeader status="pending" />
-      <InvoiceBody />
+      <SubHeader status={data.status} />
+      <InvoiceBody data={data} />
     </div>
   );
 };

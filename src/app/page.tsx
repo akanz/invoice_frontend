@@ -1,13 +1,18 @@
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
-import Sidebar from "../components/Sidebar";
+import { useStore } from "../../hooks/useStore";
 import Home from "./Home";
 
 const Index = () => {
-  return (
-    <div>
-      <Home />
-    </div>
-  );
+  const token = localStorage.getItem("token");
+  const { push } = useRouter();
+
+  if (!token) {
+    localStorage.removeItem("token");
+    push("/login");
+  }
+  return <Home />;
 };
 
 export default Index;

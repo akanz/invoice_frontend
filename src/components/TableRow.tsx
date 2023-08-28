@@ -11,7 +11,7 @@ export interface ITRowProps {
 }
 const TableRow = ({ id, date, name, amount, status }: ITRowProps) => {
   return (
-    <Link passHref href={'/invoice/first'}>
+    <Link passHref href={`/invoice/${id}`}>
       <div className="p-4 px-6 mt-5 shadow-sm rounded-lg bg-white flex flex-wrap items-center justify-between">
         <span>#{id}</span>
         <span className="text-lightgrey">{date}</span>
@@ -21,6 +21,10 @@ const TableRow = ({ id, date, name, amount, status }: ITRowProps) => {
           className={`${
             status === "paid"
               ? "bg-greenish text-greenish"
+              : status === "pending"
+              ? "bg-orangish bg-opacity-5 text-orangish"
+              : status === "cancelled"
+              ? "bg-redish bg-opacity-5 text-redish"
               : "bg-greyish text-greyish"
           } p-2 bg-opacity-5  px-4 rounded`}
         >
