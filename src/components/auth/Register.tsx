@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { useStore } from "../../../hooks/useStore";
 import { Axios, base_url } from "../../../utils/axios";
 import Message from "../alerts/Message";
@@ -30,6 +31,7 @@ const Register = () => {
         username,
         password,
       });
+      toast("successfully registered");
       console.log(res);
       setLoading(false);
       if (typeof window !== "undefined") {
@@ -41,6 +43,7 @@ const Register = () => {
       push("/");
     } catch (error: any) {
       console.log(error);
+      toast(error.message);
       setError(error.message);
       setLoading(false);
     }
@@ -52,7 +55,6 @@ const Register = () => {
   return (
     <AuthLayout>
       <div>
-        {error?.length > 0 && <Message text={error} type="error" />}
         <TextInput
           handleChange={(e: any) =>
             setRegisterForm({ ...registerForm, email: e.target.value })

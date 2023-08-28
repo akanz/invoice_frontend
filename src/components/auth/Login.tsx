@@ -5,6 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { useStore } from "../../../hooks/useStore";
 import { Axios, base_url } from "../../../utils/axios";
 import Message from "../alerts/Message";
@@ -27,6 +28,8 @@ const Login = () => {
         password,
       });
       console.log(res);
+
+      toast("successfully logged in");
       setLoading(false);
       if (typeof window !== "undefined") {
         // Perform localStorage action
@@ -37,6 +40,7 @@ const Login = () => {
       push("/");
     } catch (error: any) {
       console.log(error);
+      toast(error.message);
       setError(error.message);
       setLoading(false);
     }
@@ -47,7 +51,6 @@ const Login = () => {
   return (
     <AuthLayout>
       <div>
-        {error?.length > 0 && <Message text={error} type="error" />}
         <TextInput
           handleChange={(e: any) => setEmail(e.target.value)}
           value={email}
