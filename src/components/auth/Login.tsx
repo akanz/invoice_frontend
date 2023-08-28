@@ -28,7 +28,11 @@ const Login = () => {
       });
       console.log(res);
       setLoading(false);
-      localStorage.setItem("token", res.token);
+      if (typeof window !== "undefined") {
+        // Perform localStorage action
+        localStorage.setItem("token", res.token);
+      }
+
       updateToken(res.token);
       push("/");
     } catch (error: any) {
@@ -65,7 +69,10 @@ const Login = () => {
         />
       </div>
       <div className="mt-2">
-        <Link className="text-xs text-greypurple" href={"/register"}> Not registered? sign up</Link>
+        <Link className="text-xs text-greypurple" href={"/register"}>
+          {" "}
+          Not registered? sign up
+        </Link>
       </div>
     </AuthLayout>
   );

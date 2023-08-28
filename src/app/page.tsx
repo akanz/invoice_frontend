@@ -5,10 +5,14 @@ import { useStore } from "../../hooks/useStore";
 import Home from "./Home";
 
 const Index = () => {
-  const token = localStorage.getItem("token");
   const { push } = useRouter();
 
-  if (!token) {
+  let token;
+  if (typeof window !== "undefined") {
+    token = localStorage.getItem("token");
+  }
+
+  if (!token && typeof window !== "undefined") {
     localStorage.removeItem("token");
     push("/login");
   }

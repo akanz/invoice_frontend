@@ -32,7 +32,11 @@ const Register = () => {
       });
       console.log(res);
       setLoading(false);
-      localStorage.setItem("token", res.token);
+      if (typeof window !== "undefined") {
+        // Perform localStorage action
+        localStorage.setItem("token", res.token);
+      }
+
       updateToken(res.token);
       push("/");
     } catch (error: any) {
