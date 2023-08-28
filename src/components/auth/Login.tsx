@@ -15,7 +15,7 @@ const Login = () => {
   const { push } = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const updateToken = useStore((state) => state.updateToken);
 
@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const res: any = await Axios.post(`${base_url}/auth/login`, {
+      const res: any = await Axios.post(`/auth/login`, {
         email,
         password,
       });
@@ -45,7 +45,7 @@ const Login = () => {
       setLoading(false);
     }
     setTimeout(() => {
-      setError("");
+      setError(null);
     }, 3000);
   };
   return (
@@ -77,6 +77,15 @@ const Login = () => {
           Not registered? sign up
         </Link>
       </div>
+      <Toaster
+        toastOptions={{
+          style: {
+            backgroundColor: error ? "#EC5757" : "#33D69F",
+            color: 'white'
+          },
+          duration: 2500
+        }}
+      />
     </AuthLayout>
   );
 };
