@@ -72,7 +72,7 @@ const Sidebar = () => {
           <div className="w-full md:w-4/5 mt-10 pt-20 z-10 lg:mt-0 lg:pt-10 lg:w-1/2 lg:pl-28 py-8 rounded-r-3xl overflow-auto absolute top-0 bottom-0 bg-white shadow-xl">
             <div className="w-10/12 pt-4 mx-auto">
               <HeaderTitle title="Edit #XM9141" />
-              <Form type="edit" />
+              <Form type="create" />
             </div>
           </div>
         </>

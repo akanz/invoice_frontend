@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactPropTypes } from "react";
 
 export interface ITextProps {
   title?: string;
@@ -6,8 +6,10 @@ export interface ITextProps {
   inputStyle?: string;
   handleChange?: (e: any) => void;
   readOnly?: boolean;
-  value?: string;
+  value?: string | number;
   name?: string;
+  type?: string;
+  defaultValue?: string | number;
 }
 const TextInput = ({
   title,
@@ -16,7 +18,7 @@ const TextInput = ({
   readOnly = false,
   ...props
 }: ITextProps) => {
-  const { handleChange, value, name }: any = props;
+  const { handleChange, value, name, type, defaultValue }: any = props;
   return (
     <div className="mb-4">
       <h3 className="text-sm mb-4 text-purplish">{title}</h3>
@@ -25,10 +27,12 @@ const TextInput = ({
       </div>
       <div>
         <input
+          defaultValue={defaultValue ?? ""}
           onChange={handleChange}
           readOnly={readOnly}
           value={value}
-          type={name === "password" ? "password" : "text"}
+          name={name}
+          type={type ? type : name === "password" ? "password" : "text"}
           className={`${inputStyle} w-full p-2 border border-lightpurple rounded`}
         />
       </div>

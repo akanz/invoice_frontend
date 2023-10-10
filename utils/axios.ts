@@ -68,9 +68,12 @@ instance.interceptors.response.use(
                 return axios(originalRequest);
             } catch (error) {
                 // Handle refresh token error or redirect to login
+                if (typeof window !== "undefined") {
+                    window.location.replace('/login')
+                }
             }
         }
 
-        return Promise.reject(error);
+        return Promise.reject({ message: error?.message, status: error?.response?.status });
     }
 );

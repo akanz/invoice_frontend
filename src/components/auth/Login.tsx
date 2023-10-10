@@ -17,7 +17,10 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const updateToken = useStore((state) => state.updateToken);
+  const [updateToken, updateUser] = useStore((state) => [
+    state.updateToken,
+    state.updateUserDetails,
+  ]);
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
@@ -27,7 +30,6 @@ const Login = () => {
         email,
         password,
       });
-      console.log(res);
 
       toast("successfully logged in");
       setLoading(false);
@@ -37,6 +39,7 @@ const Login = () => {
       }
 
       updateToken(res.token);
+      updateUser(res.data);
       push("/");
     } catch (error: any) {
       console.log(error);
@@ -81,9 +84,9 @@ const Login = () => {
         toastOptions={{
           style: {
             backgroundColor: error ? "#EC5757" : "#33D69F",
-            color: 'white'
+            color: "white",
           },
-          duration: 2500
+          duration: 2500,
         }}
       />
     </AuthLayout>
